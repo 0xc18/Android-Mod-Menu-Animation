@@ -14,8 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Gradle 8.10
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '7.2' # Quotes required to prevent YAML converting to number
+
       - name: Verify Gradle Wrapper
-        run: gradle init --gradle-version 7.2
+        run: gradle init 
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -34,3 +39,16 @@ jobs:
         with:
           name: release-apk
           path: app/build/outputs/apk/release/*.apk
+
+
+
+
+
+
+
+
+
+
+
+  - name: Build with Gradle 8.10
+    run: gradle build
