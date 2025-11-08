@@ -20,8 +20,8 @@ jobs:
         with:
           gradle-version: '7.2' # Quotes required to prevent YAML converting to number
 
-      - name: Verify Gradle Wrapper
-        run: gradle init 
+#      - name: Verify Gradle Wrapper
+#        run: gradle init 
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -29,11 +29,11 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Grant execute permission for Gradle
-        run: chmod +x gradlew
+ #     - name: Grant execute permission for Gradle
+#        run: chmod +x gradlew
 
       - name: Build Release APK
-        run: ./gradlew assembleRelease --stacktrace
+        run: gradle assembleRelease --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
